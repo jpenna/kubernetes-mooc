@@ -1,18 +1,101 @@
-export function buildPage(applicationHash: string, requestHash: string, imageUrl: string) {
-    return `<!DOCTYPE html>
+const HARDCODED_TODOS = [
+  "Learn Kubernetes basics",
+  "Deploy the todo app to a cluster",
+  "Set up persistent volume for images",
+  "Add POST endpoint for new todos",
+];
+
+export function buildPage(
+  applicationHash: string,
+  requestHash: string,
+  imageUrl: string,
+) {
+  const todoItems = HARDCODED_TODOS.map((todo) => `<li>${todo}</li>`).join(
+    "\n    ",
+  );
+
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo App</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-    img { max-width: 100%; height: auto; display: block; margin-top: 1rem; border-radius: 4px; }
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { margin-bottom: 0.25rem; text-align: center; }
+    img { max-width: 100%; height: auto; display: block; margin: 1rem auto; border-radius: 4px; }
+    form { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="text"]:invalid { border-color: #e53935; }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:disabled { background: #90caf9; cursor: not-allowed; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li {
+      padding: 0.75rem 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      background: #fafafa;
+    }
+    .char-count { font-size: 0.75rem; color: #666; margin-top: 0.25rem; }
+    .char-count.over { color: #e53935; }
   </style>
 </head>
 <body>
-  <p>Application ${applicationHash}. Request ${requestHash}</p>
-  <img src="${imageUrl}" alt="Random image from Lorem Picsum" width="1200">
+  <h1>Todo App</h1>
+  <img src="${imageUrl}" alt="Random image from Lorem Picsum" width="300">
+
+  <form id="todo-form">
+    <input
+      type="text"
+      id="todo-input"
+      name="todo"
+      maxlength="140"
+      placeholder="What needs to be done?"
+      aria-describedby="char-count"
+      required
+    >
+    <button type="submit" id="send-btn">Send</button>
+  </form>
+  <p class="char-count" id="char-count">0 / 140</p>
+
+  <ul id="todo-list">
+    ${todoItems}
+  </ul>
+
+  <script>
+    const MAX_LENGTH = 140;
+    const input = document.getElementById("todo-input");
+    const charCount = document.getElementById("char-count");
+    const sendBtn = document.getElementById("send-btn");
+    const form = document.getElementById("todo-form");
+
+    function updateCharCount() {
+      const len = input.value.length;
+      charCount.textContent = len + " / " + MAX_LENGTH;
+      charCount.classList.toggle("over", len > MAX_LENGTH);
+      sendBtn.disabled = len === 0 || len > MAX_LENGTH;
+    }
+
+    input.addEventListener("input", updateCharCount);
+    form.addEventListener("submit", (e) => e.preventDefault());
+
+    updateCharCount();
+  </script>
 </body>
 </html>`;
 }

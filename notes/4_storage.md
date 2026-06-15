@@ -11,6 +11,21 @@
 - Cache (persists between container restarts)
 - Sahre files between two containers in a pod
 
+## Persistent Volumes
+
+- Persistent volumes are a way to store data outside of a pod's lifecycle
+- They are created and managed by the cluster administrator
+- They are a resource in the cluster
+
+```bash
+# Create a directory on the node to use as local storage
+docker exec k3d-k3s-default-agent-0 mkdir -p /tmp/kube
+```
+
+### Claims
+
+Persistent volume claims are a way to claim a persistent volume. Only the pods that are using the claim can access the volume.
+
 
 ## Resources
 

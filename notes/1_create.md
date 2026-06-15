@@ -1,24 +1,55 @@
 # Kubernetes
 
-* k3d cluster create -a 2
-* kubectol cluster-info
-* k3d cluster stop / start / delete
+## Cluster
 
-Create deployment:
-* kubectl create deployment NAME --image=IMAGE
+```bash
+k3d cluster create -a 2
+kubectol cluster-info
+k3d cluster stop      # stop cluster
+k3d cluster start     # start cluster
+k3d cluster delete    # delete cluster
+```
+
+## Deployments
+
+```bash
+kubectl create deployment NAME --image=IMAGE
+kubectl delete deployment NAME
+kubectl edit deployment <deployment-name> # edit deployment after creation
+```
+
+Create a YAML file for the deployment. Check [deployment.yaml](../manifests/deployment.yaml) for an example.
+
+```bash
+kubectl apply -f <deployment-name>.yaml
+kubectl delete -f manifests/deployment.yaml # delete deployment
+kubectl apply -f https://.../deployment.yaml # apply deployment from URL
+```
+
+## Resources
+
+```bash
+kubectl explain <RESOURCE> # get information about a resource
+kubectl get <RESOURCE> # list resources
+kubectl logs -f <RESOURCE> # see output
+```
+
+## Images
 
 Local images:
-* k3d image import <image-name>
-> Must EDIT the deployment's imagePullPolicy from the default `Always` to `IfNotPresent` or `Never` to allow the local image to be used (check below)
+```bash
+k3d image import <image-name>
+# Must EDIT the deployment's imagePullPolicy from the default `Always` to `IfNotPresent` or `Never` to allow the local image to be used (check above)
+```
 
-Edit deployment after creation:
-* kubectl edit deployment <deployment-name>
+Update the image:
 
-Get information:
-* kubectl explain <RESOURCE>
+```bash
+kubectl set image deployment/my-app kubernetes-mooc=kubernetes-mooc:v2
+```
 
-List resources:
-* kubectl get <RESOURCE>
+## Scaling
 
-See output:
-* kubectl logs -f <RESOURCE>
+```bash
+kubectl scale deployment <deployment-name> --replicas=2
+```

@@ -6,6 +6,7 @@
 
 - [1.1 Log output](https://github.com/jpenna/kubernetes-mooc/tree/1.1)
 - [1.2 Server](https://github.com/jpenna/kubernetes-mooc/tree/1.2)
+- [1.3 Manifest](https://github.com/jpenna/kubernetes-mooc/tree/1.3)
 
 ## Run
 

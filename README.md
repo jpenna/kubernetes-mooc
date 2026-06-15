@@ -1,5 +1,13 @@
 # kubernetes-mooc
 
+## Exercises
+
+### Chapter 1
+
+- [1.1 Log output](https://github.com/jpenna/kubernetes-mooc/tree/1.1)
+
+## Run
+
 To install dependencies:
 
 ```bash
@@ -9,7 +17,5 @@ bun install
 To run:
 
 ```bash
-bun run index.ts
+bun run start
 ```
-
-This project was created using `bun init` in bun v1.3.14. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.

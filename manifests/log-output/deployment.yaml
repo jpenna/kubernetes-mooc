@@ -12,16 +12,23 @@ spec:
       labels:
         app: log-output
     spec:
+      securityContext:
+        fsGroup: 1000
       volumes:
         - name: shared-log
           emptyDir: {}
+        - name: persist-log-ping-pv
+          persistentVolumeClaim:
+            claimName: persist-log-ping-pvc
       containers:
         - name: log-output-api
           imagePullPolicy: IfNotPresent
-          image: log-output:v3
+          image: log-output:v4
           volumeMounts:
             - name: shared-log
               mountPath: /usr/src/app/logs
+            - name: persist-log-ping-pv
+              mountPath: /usr/src/app/pings
           env:
             - name: IS_API
               value: "true"
@@ -33,6 +40,8 @@ spec:
           volumeMounts:
             - name: shared-log
               mountPath: /usr/src/app/logs
+            - name: persist-log-ping-pv
+              mountPath: /usr/src/app/pings
           env:
             - name: IS_API
               value: "false"

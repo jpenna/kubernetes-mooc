@@ -8,17 +8,23 @@ for (let i = 0; i < 10; i++) {
     randomString += characters.charAt(Math.floor(Math.random() * characters.length));
 }
 
+function createFile(filePath: string) {
+    const dirPath = path.dirname(filePath);
+    if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath, { recursive: true });
+    }
+    if (!fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, '');
+    }
+}
+
 const isApi = process.env.IS_API === 'true';
 
 const logFilePath = '/usr/src/app/logs/log.txt';
+const pingFilePath = '/usr/src/app/pings/ping.txt';
 
-const dirPath = path.dirname(logFilePath);
-if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-}
-if (!fs.existsSync(logFilePath)) {
-    fs.writeFileSync(logFilePath, '');
-}
+createFile(logFilePath);
+createFile(pingFilePath);
 
 export function print() {
     const now = new Date();
@@ -43,7 +49,8 @@ if (isApi) {
         path: "/logs",
         handler: () => {
           const logs = fs.readFileSync(logFilePath, 'utf8');
-          return logs;
+          const ping = fs.readFileSync(pingFilePath, 'utf8');
+          return `${logs}<br/>Ping / Pong: ${ping ?? '0'}`;
         },
       },
     ]);

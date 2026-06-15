@@ -12,7 +12,16 @@ spec:
       labels:
         app: ping
     spec:
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: persist-log-ping-pv
+          persistentVolumeClaim:
+            claimName: persist-log-ping-pvc
       containers:
         - name: ping
           imagePullPolicy: IfNotPresent
-          image: ping:v2
+          image: ping:v3
+          volumeMounts:
+            - name: persist-log-ping-pv
+              mountPath: /usr/src/app/pings

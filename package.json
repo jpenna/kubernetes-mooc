@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "log-output": "bun run src/log-output.ts",
-    "todo-app": "bun run src/todo-app.ts",
+    "todo-app": "bun run src/todo-app/index.ts",
     "ping": "bun run src/ping.ts"
   },
   "devDependencies": {
@@ -15,6 +15,8 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@hapi/hapi": "^21.4.9"
+    "@hapi/hapi": "^21.4.9",
+    "axios": "^1.18.0",
+    "prettier": "^3.8.4"
   }
 }

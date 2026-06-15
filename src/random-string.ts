@@ -7,9 +7,11 @@ for (let i = 0; i < 10; i++) {
 }
 
 
-function print() {
+export function print() {
     const now = new Date();
-    console.log(`${now.toISOString()}: ${randomString}`);
+    const str = `${now.toISOString()}: ${randomString}`;
+    console.log(str);
+    return str;
 }
 
 print();

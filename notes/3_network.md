@@ -9,6 +9,8 @@ kubectl port-forward POD HOST_PORT:CONTAINER_PORT
 
 ## Services
 
+Services do the bridge between requesters and the pods (external and internal).
+
 1. Create a service manifest. Check example in [service.yaml](../manifests/service.yaml)
 2. Apply the service manifest.
 

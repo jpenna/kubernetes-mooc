@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+import { print } from "./random-string";
 
 function randomHash(length = 6): string {
   const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -17,14 +18,24 @@ const server = Hapi.server({
   host: "0.0.0.0",
 });
 
-server.route({
-  method: "GET",
-  path: "/{path*}",
-  handler: () => {
-    const requestHash = randomHash();
-    return `Application ${applicationHash}. Request ${requestHash}`;
+
+server.route([
+  {
+    method: "GET",
+    path: "/todo/random",
+    handler: () => {
+      return print();
+    },
   },
-});
+  {
+    method: "GET",
+    path: "/todo/{path*}",
+    handler: () => {
+      const requestHash = randomHash();
+      return `Application ${applicationHash}. Request ${requestHash}`;
+    },
+  },
+]);
 
 await server.start();
 console.log(`Server running on port ${server.info.port}`);

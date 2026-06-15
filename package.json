@@ -4,12 +4,16 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run src/index.ts"
+    "start": "bun run src/random-string.ts",
+    "server": "bun run src/server.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.4.9"
   }
 }

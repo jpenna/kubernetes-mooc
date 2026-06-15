@@ -11,4 +11,4 @@ COPY package.json bun.lock ./
 COPY src ./src
 
 USER bun
-CMD ["bun", "run", "start"]
+CMD ["bun", "run", "server"]

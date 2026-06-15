@@ -1,21 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app
+  name: ping-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-app
+      app: ping
   template:
     metadata:
       labels:
-        app: todo-app
+        app: ping
     spec:
       containers:
-        - name: todo-app
+        - name: ping
           imagePullPolicy: IfNotPresent
-          image: todo-app:v5
-          env:
-            - name: PORT
-              value: "3000"
+          image: ping:v2

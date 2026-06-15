@@ -15,4 +15,4 @@ spec:
       containers:
         - name: random-string
           imagePullPolicy: IfNotPresent
-          image: random-string:v1
+          image: random-string:v2

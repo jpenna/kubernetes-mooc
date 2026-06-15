@@ -4,8 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run src/random-string.ts",
-    "server": "bun run src/server.ts"
+    "random-string": "bun run src/random-string.ts",
+    "todo": "bun run src/server.ts",
+    "ping": "bun run src/ping.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"

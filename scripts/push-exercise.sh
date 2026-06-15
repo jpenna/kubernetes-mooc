@@ -11,7 +11,7 @@ if [[ -z "$EXERCISE_NUMBER" || -z "$COMMIT_MESSAGE" ]]; then
   exit 1
 fi
 
-if ! [[ "$EXERCISE_NUMBER" =~ ^[0-9]\.[0-9]$ ]]; then
+if ! [[ "$EXERCISE_NUMBER" =~ ^[0-9]\.[0-9][0-9]?$ ]]; then
   echo -e "\033[31mError: Exercise number must be in the format single_digit.single_digit (e.g., 1.2)\033[0m"
   exit 1
 fi

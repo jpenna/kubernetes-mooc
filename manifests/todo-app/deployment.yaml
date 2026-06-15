@@ -15,7 +15,7 @@ spec:
       containers:
         - name: todo-app
           imagePullPolicy: IfNotPresent
-          image: todo-app:v5
+          image: todo-app:v6
           env:
             - name: PORT
               value: "3000"

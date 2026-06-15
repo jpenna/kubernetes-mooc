@@ -13,6 +13,7 @@
 - [1.7 Ingress](https://github.com/jpenna/kubernetes-mooc/tree/1.7)
 - [1.8 Todo App - Ingress (already done in 1.7)](https://github.com/jpenna/kubernetes-mooc/tree/1.8)
 - [1.9 Ping App](https://github.com/jpenna/kubernetes-mooc/tree/1.9)
+- [1.10 Log Output - shared volume](https://github.com/jpenna/kubernetes-mooc/tree/1.10)
 
 ## Run
 

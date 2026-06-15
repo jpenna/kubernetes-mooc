@@ -1,5 +1,5 @@
 import Hapi from "@hapi/hapi";
-import { print } from "./random-string";
+import { print } from "./log-output";
 
 function randomHash(length = 6): string {
   const characters = "abcdefghijklmnopqrstuvwxyz0123456789";

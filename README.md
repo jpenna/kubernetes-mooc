@@ -11,6 +11,7 @@
 - [1.5 Port Forwarding](https://github.com/jpenna/kubernetes-mooc/tree/1.5)
 - [1.6 Services + NodePort](https://github.com/jpenna/kubernetes-mooc/tree/1.6)
 - [1.7 Ingress](https://github.com/jpenna/kubernetes-mooc/tree/1.7)
+- [1.8 Todo App - Ingress (already done in 1.7)](https://github.com/jpenna/kubernetes-mooc/tree/1.8)
 
 ## Run
 

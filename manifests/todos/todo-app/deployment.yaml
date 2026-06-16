@@ -20,13 +20,18 @@ spec:
       containers:
         - name: todo-app
           imagePullPolicy: IfNotPresent
-          image: todo-app:v10
+          image: todo-app:v11
           volumeMounts:
             - name: persist-todo-app-pv
               mountPath: /usr/src/app/files
           env:
             - name: PORT
               value: "3000"
+            - name: IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-configmap
+                  key: MY_IMAGE_URL # key inside the configmap
           resources:
             requests:
               cpu: 100m

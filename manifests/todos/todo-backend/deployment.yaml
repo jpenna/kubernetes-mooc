@@ -20,14 +20,6 @@ spec:
           env:
             - name: PORT
               value: "3000"
-            - name: SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: pixabay-apikey
-                  key: SECRET_IN_ENV # key inside the secret
-          envFrom:
-            - secretRef:
-                name: todo-apikey # API
           resources:
             requests:
               cpu: 100m

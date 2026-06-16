@@ -20,17 +20,20 @@
 ```bash
 # Create a directory on the node to use as local storage
 docker exec k3d-k3s-default-agent-0 mkdir -p /tmp/kube
+# Give ownership to the bun user (uid/gid 1000)
+docker exec k3d-k3s-default-agent-0 chown -R 1000:1000 /tmp/kube
 ```
 
 ### Claims
 
 Persistent volume claims are a way to claim a persistent volume. Only the pods that are using the claim can access the volume.
 
-
 ## Resources
 
 ### Videos
+
 [Kubernetes and Networks: Why is This So Dang Hard?(opens in a new tab)](https://www.youtube.com/watch?v=GgCA2USI5iQ)
 
 ### Articles
+
 [Why is storage on Kubernetes is so hard?](https://softwareengineeringdaily.com/2019/01/11/why-is-storage-on-kubernetes-is-so-hard/)

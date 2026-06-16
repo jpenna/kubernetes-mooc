@@ -58,6 +58,14 @@ spec:
           env:
             - name: IS_API
               value: "false"
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: pixabay-apikey
+                  key: SECRET_IN_ENV # key inside the secret
+          envFrom:
+            - secretRef:
+                name: todo-apikey # API
           resources:
             requests:
               cpu: 100m

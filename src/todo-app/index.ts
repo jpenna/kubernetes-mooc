@@ -4,6 +4,11 @@ import fs from "fs";
 import path from "path";
 import { buildPage } from "./page";
 
+const imageUrl = process.env.IMAGE_URL;
+if (!imageUrl) {
+  throw new Error("IMAGE_URL is not set");
+}
+
 const isKubernetes = Boolean(process.env.KUBERNETES_SERVICE_HOST);
 const appDir = isKubernetes ? "/usr/src/app/files" : "./vols";
 const imageFilePath = path.join(appDir, "img.jpg");
@@ -37,7 +42,6 @@ server.route([
       console.log("Cache miss");
 
       lastImgFetch = now;
-      const imageUrl = `https://picsum.photos/1200?random=${crypto.randomUUID()}`;
 
       await axios.get(imageUrl, { responseType: "stream" }).then((response) => {
         response.data.pipe(fs.createWriteStream(imageFilePath));

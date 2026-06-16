@@ -40,6 +40,7 @@ kubectl logs -f <RESOURCE> # see output
 ## Images
 
 Local images:
+
 ```bash
 k3d image import <image-name>
 # Must EDIT the deployment's imagePullPolicy from the default `Always` to `IfNotPresent` or `Never` to allow the local image to be used (check above)
@@ -55,4 +56,32 @@ kubectl set image deployment/my-app kubernetes-mooc=kubernetes-mooc:v2
 
 ```bash
 kubectl scale deployment <deployment-name> --replicas=2
+```
+
+## Namespaces
+
+Namespaces are used to separate resource sin the same cluster.
+
+```bash
+# Create a new namespace
+kubectl create namespace <namespace-name>
+
+# View all namespaces
+kubectl get pods --all-namespaces
+
+# View the kube-system namespace
+kubectl get pods -n kube-system
+
+# Configure default namespace (this isn't the recommended appoach)
+kubectl config set-context --current --namespace=<name>
+```
+
+Use the namespace:
+
+```yaml
+# ...
+metadata:
+  namespace: example-namespace
+  name: example
+# ...
 ```

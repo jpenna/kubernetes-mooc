@@ -14,14 +14,14 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
-      volumes:
-        - name: persist-log-ping-pv
-          persistentVolumeClaim:
-            claimName: persist-log-ping-pvc
+      # volumes:
+      #   - name: persist-log-ping-pv
+      #     persistentVolumeClaim:
+      #       claimName: persist-log-ping-pvc
       containers:
         - name: ping
           imagePullPolicy: IfNotPresent
-          image: ping:v3
-          volumeMounts:
-            - name: persist-log-ping-pv
-              mountPath: /usr/src/app/pings
+          image: ping:v4
+          # volumeMounts:
+          #   - name: persist-log-ping-pv
+          #     mountPath: /usr/src/app/pings

@@ -18,6 +18,10 @@
 - [1.12 Todo App - cache image](https://github.com/jpenna/kubernetes-mooc/tree/1.12)
 - [1.13 Todo Page](https://github.com/jpenna/kubernetes-mooc/tree/1.13)
 
+### Chapter 2
+
+- [2.1 Connecting Pods](https://github.com/jpenna/kubernetes-mooc/tree/2.1)
+
 ## Run
 
 To install dependencies:

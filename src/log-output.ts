@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+import axios from "axios";
 import fs from "fs";
 import path from "path";
 
@@ -25,10 +26,10 @@ const isKubernetes = Boolean(process.env.KUBERNETES_SERVICE_HOST);
 const appDir = isKubernetes ? "/usr/src/app" : "./vols";
 
 const logFilePath = path.join(appDir, "logs", "log.txt");
-const pingFilePath = path.join(appDir, "pings", "ping.txt");
+// const pingFilePath = path.join(appDir, "pings", "ping.txt");
 
 createFile(logFilePath);
-createFile(pingFilePath);
+// createFile(pingFilePath);
 
 export function print() {
   const now = new Date();
@@ -50,9 +51,14 @@ if (isApi) {
     {
       method: "GET",
       path: "/logs",
-      handler: () => {
+      handler: async () => {
         const logs = fs.readFileSync(logFilePath, "utf8");
-        const ping = fs.readFileSync(pingFilePath, "utf8");
+
+        const ping = await axios
+          .get("http://ping-svc:2355/pingpong")
+          .then((response) => response.data);
+
+        // const ping = fs.readFileSync(pingFilePath, "utf8");
         return `${logs}<br/>Ping / Pong: ${ping ?? "0"}`;
       },
     },

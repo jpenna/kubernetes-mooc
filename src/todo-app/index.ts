@@ -12,16 +12,6 @@ if (!fs.existsSync(appDir)) {
   fs.mkdirSync(appDir, { recursive: true });
 }
 
-function randomHash(length = 6): string {
-  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
-
-const applicationHash = randomHash();
 const port = Number(process.env.PORT) || 3000;
 
 const server = Hapi.server({
@@ -38,25 +28,22 @@ server.route([
     path: "/todo",
     handler: async (_request, h) => {
       const now = Date.now();
-      const requestHash = randomHash();
 
       if (now - lastImgFetch < cacheFor) {
         console.log("Cache hit");
-        return buildPage(applicationHash, requestHash, "/todo/img.jpg");
+        return buildPage("/todo/img.jpg");
       }
 
       console.log("Cache miss");
 
       lastImgFetch = now;
-      const imageUrl = `https://picsum.photos/1200?random=${requestHash}`;
+      const imageUrl = `https://picsum.photos/1200?random=${crypto.randomUUID()}`;
 
       await axios.get(imageUrl, { responseType: "stream" }).then((response) => {
         response.data.pipe(fs.createWriteStream(imageFilePath));
       });
 
-      return h
-        .response(buildPage(applicationHash, requestHash, "/todo/img.jpg"))
-        .type("text/html");
+      return h.response(buildPage("/todo/img.jpg")).type("text/html");
     },
   },
   {

@@ -6,6 +6,7 @@
   "scripts": {
     "log-output": "bun run src/log-output.ts",
     "todo-app": "bun run src/todo-app/index.ts",
+    "todo-backend": "bun run src/todo-backend/index.ts",
     "ping": "bun run src/ping.ts"
   },
   "devDependencies": {

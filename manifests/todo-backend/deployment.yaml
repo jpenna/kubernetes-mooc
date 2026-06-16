@@ -1,28 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app
+  name: todo-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-app
+      app: todo-backend
   template:
     metadata:
       labels:
-        app: todo-app
+        app: todo-backend
     spec:
-      volumes:
-        - name: persist-todo-app-pv
-          persistentVolumeClaim:
-            claimName: persist-todo-app-pvc
       containers:
-        - name: todo-app
+        - name: todo-backend
           imagePullPolicy: IfNotPresent
-          image: todo-app:v10
-          volumeMounts:
-            - name: persist-todo-app-pv
-              mountPath: /usr/src/app/files
+          image: todo-backend:v1
           env:
             - name: PORT
               value: "3000"

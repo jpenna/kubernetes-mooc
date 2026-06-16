@@ -1,8 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: project
   name: persist-todo-app-pvc
 spec:
+  volumeName: persist-todo-app-pv
   storageClassName: my-example-pv
   accessModes:
     - ReadWriteOnce

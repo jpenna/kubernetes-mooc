@@ -1,8 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: exercises
   name: persist-log-ping-pvc
 spec:
+  volumeName: persist-log-ping-pv
   storageClassName: my-example-pv
   accessModes:
     - ReadWriteOnce

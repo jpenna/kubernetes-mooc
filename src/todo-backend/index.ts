@@ -22,7 +22,6 @@ server.route([
     method: "POST",
     path: "/todos",
     handler: async (request, h) => {
-      console.log("POST /todos", request);
       const payload = (await request.payload) as Todo;
 
       if (payload === undefined) {

@@ -25,13 +25,13 @@ const cacheFor = 10 * 60 * 1000; // 10 minutes
 server.route([
   {
     method: "GET",
-    path: "/todo",
+    path: "/",
     handler: async (_request, h) => {
       const now = Date.now();
 
       if (now - lastImgFetch < cacheFor) {
         console.log("Cache hit");
-        return buildPage("/todo/img.jpg");
+        return buildPage("/img.jpg");
       }
 
       console.log("Cache miss");
@@ -43,12 +43,12 @@ server.route([
         response.data.pipe(fs.createWriteStream(imageFilePath));
       });
 
-      return h.response(buildPage("/todo/img.jpg")).type("text/html");
+      return h.response(buildPage("/img.jpg")).type("text/html");
     },
   },
   {
     method: "GET",
-    path: "/todo/img.jpg",
+    path: "/img.jpg",
     handler: (_request, h) => {
       try {
         const image = fs.readFileSync(imageFilePath);

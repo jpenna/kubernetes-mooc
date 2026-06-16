@@ -23,6 +23,7 @@
 - [2.1 Connecting Pods](https://github.com/jpenna/kubernetes-mooc/tree/2.1)
 - [2.2 Todos backend](https://github.com/jpenna/kubernetes-mooc/tree/2.2)
 - [2.3 Namespaces](https://github.com/jpenna/kubernetes-mooc/tree/2.3)
+- [2.4 Project Namespace](https://github.com/jpenna/kubernetes-mooc/tree/2.4)
 
 ## Run
 

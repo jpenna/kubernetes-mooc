@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: log-output-svc
+  namespace: project
+  name: todo-backend-svc
 spec:
   type: ClusterIP
   selector:
-    app: log-output
+    app: todo-backend
   ports:
-    - port: 2300
+    - port: 2351
       protocol: TCP
       targetPort: 3000

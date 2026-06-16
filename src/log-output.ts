@@ -11,6 +11,11 @@ for (let i = 0; i < 10; i++) {
   );
 }
 
+const envFile = fs.readFileSync(
+  path.join("/etc/config", "information.txt"),
+  "utf8",
+);
+
 function createFile(filePath: string) {
   const dirPath = path.dirname(filePath);
   if (!fs.existsSync(dirPath)) {
@@ -34,7 +39,7 @@ createFile(logFilePath);
 export function print() {
   const now = new Date();
   const str = `${now.toISOString()}: ${randomString}`;
-  console.log(str);
+  console.log(`env file: ${envFile} ${str}`);
   fs.appendFileSync(logFilePath, str + "\n");
   return str;
 }

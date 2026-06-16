@@ -21,10 +21,13 @@ spec:
         # - name: persist-log-ping-pv
         #   persistentVolumeClaim:
         #     claimName: persist-log-ping-pvc
+        - name: log-configmap
+          configMap:
+            name: log-configmap
       containers:
         - name: log-output-api
           imagePullPolicy: IfNotPresent
-          image: log-output:v5
+          image: log-output:v6
           volumeMounts:
             - name: shared-log
               mountPath: /usr/src/app/logs
@@ -35,14 +38,30 @@ spec:
               value: "true"
             - name: PORT
               value: "3000"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
         - name: log-output-console
           imagePullPolicy: IfNotPresent
-          image: log-output:v5
+          image: log-output:v6
           volumeMounts:
             - name: shared-log
               mountPath: /usr/src/app/logs
             # - name: persist-log-ping-pv
             #   mountPath: /usr/src/app/pings
+            - name: log-configmap
+              mountPath: /etc/config
           env:
             - name: IS_API
               value: "false"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi

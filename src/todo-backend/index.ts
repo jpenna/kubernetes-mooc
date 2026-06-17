@@ -18,6 +18,13 @@ const server = Hapi.server({
   host: "0.0.0.0",
 });
 
+function createTodo(text: string, completed = false) {
+  return client.query(
+    "INSERT INTO todos (text, completed) VALUES ($1, $2) RETURNING *",
+    [text, false],
+  );
+}
+
 server.route([
   {
     method: "GET",
@@ -46,15 +53,27 @@ server.route([
         return h.response("Invalid completed").code(400);
       }
 
-      const todo: Partial<Todo> = {
-        text: payload.text,
-        completed: payload.completed,
-      };
+      const result = await createTodo(payload.text, payload.completed);
 
-      const result = await client.query(
-        "INSERT INTO todos (text, completed) VALUES ($1, $2) RETURNING *",
-        [todo.text, todo.completed],
-      );
+      return h.response(result.rows[0]).code(201);
+    },
+  },
+  {
+    method: "POST",
+    path: "/todos/wiki",
+    handler: async (request, h) => {
+      const payload = (await request.payload) as { url?: string };
+
+      if (payload?.url === undefined || payload.url.length === 0) {
+        return h.response("Invalid url").code(400);
+      }
+
+      const wikiUrl = payload.url.startsWith("//")
+        ? `https:${payload.url}`
+        : payload.url;
+      const text = `Wiki: ${wikiUrl}`;
+
+      const result = await createTodo(text, false);
 
       return h.response(result.rows[0]).code(201);
     },

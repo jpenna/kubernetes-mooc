@@ -1,28 +1,36 @@
 import Hapi from "@hapi/hapi";
+import { Client } from "pg";
+
+const client = await new Client({
+  user: "postgres",
+  host: "postgres-svc.exercises.svc.cluster.local",
+  database: "postgres",
+  password: process.env.POSTGRES_PASSWORD,
+  port: 5432,
+}).connect();
 
 const port = Number(process.env.PORT) || 3000;
-
-// const dirPath = '/usr/src/app/pings';
-// if (!fs.existsSync(dirPath)) {
-//     fs.mkdirSync(dirPath, { recursive: true });
-// }
-// const pingFilePath = path.join(dirPath, 'ping.txt');
 
 const server = Hapi.server({
   port,
   host: "0.0.0.0",
 });
 
-let counter = 0;
-
 server.route([
   {
     method: "GET",
     path: "/pingpong",
-    handler: () => {
-      const current = counter++;
-      // fs.writeFileSync(pingFilePath, `${current}`);
-      return current;
+    handler: async () => {
+      try {
+        const inserted = await client.query(
+          "INSERT INTO pings DEFAULT VALUES RETURNING id;",
+        );
+        const counter = inserted.rows[0].id - 1;
+        return counter;
+      } catch (error) {
+        console.error("Error inserting into database", error);
+        throw error;
+      }
     },
   },
 ]);

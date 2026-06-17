@@ -37,3 +37,38 @@ Persistent volume claims are a way to claim a persistent volume. Only the pods t
 ### Articles
 
 [Why is storage on Kubernetes is so hard?](https://softwareengineeringdaily.com/2019/01/11/why-is-storage-on-kubernetes-is-so-hard/)
+
+### StatefulSets
+
+StatefulSets are like Deployments, but with data that is stable between the pods (e.g. scaling 0 - 1 - 2 reuses the same volumes 0 - 1 - 2). The data is also attached to the pod and not shared between replicas.
+
+Requires headless service for stable network identity: `ClusterIP: None`. The access must be done directly to the pods.
+
+It accepts a `volumeClaimTemplates`. This template is used to the create the PV and PVC for each replica:
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-stset
+spec:
+  serviceName: redis-svc
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redisapp
+  template: ...
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 100Mi
+```
+
+By using `storageClassName: local-path`, k3s can dynamically provide the storage.
+
+Each replica has it's own domain name: `redis-stset-0.redis-svc` | `redis-stset-1.redis-svc` | ...

@@ -27,6 +27,7 @@
 - [2.5 ConfigMap](https://github.com/jpenna/kubernetes-mooc/tree/2.5)
 - [2.6 Project env](https://github.com/jpenna/kubernetes-mooc/tree/2.6)
 - [2.7 Ping App - database](https://github.com/jpenna/kubernetes-mooc/tree/2.7)
+- [2.8 Todo App - database](https://github.com/jpenna/kubernetes-mooc/tree/2.8)
 
 ## Run
 

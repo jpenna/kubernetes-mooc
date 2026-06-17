@@ -20,7 +20,7 @@ spec:
       containers:
         - name: todo-app
           imagePullPolicy: IfNotPresent
-          image: todo-app:v11
+          image: todo-app:v12
           volumeMounts:
             - name: persist-todo-app-pv
               mountPath: /usr/src/app/files

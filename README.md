@@ -2,7 +2,7 @@
 
 ## Exercises
 
-### Chapter 1
+### Chapter 2
 
 - [1.1 Log output](https://github.com/jpenna/kubernetes-mooc/tree/1.1)
 - [1.2 Server](https://github.com/jpenna/kubernetes-mooc/tree/1.2)
@@ -18,7 +18,7 @@
 - [1.12 Todo App - cache image](https://github.com/jpenna/kubernetes-mooc/tree/1.12)
 - [1.13 Todo Page](https://github.com/jpenna/kubernetes-mooc/tree/1.13)
 
-### Chapter 2
+### Chapter 3
 
 - [2.1 Connecting Pods](https://github.com/jpenna/kubernetes-mooc/tree/2.1)
 - [2.2 Todos backend](https://github.com/jpenna/kubernetes-mooc/tree/2.2)
@@ -31,12 +31,13 @@
 - [2.9 Todo App - CronJob](https://github.com/jpenna/kubernetes-mooc/tree/2.9)
 - [2.10 Todo App - Logging](https://github.com/jpenna/kubernetes-mooc/tree/2.10)
 
-### Chapter 3
+### Chapter 4
 
 - [3.1 Ping in GKE](https://github.com/jpenna/kubernetes-mooc/tree/3.1)
 - [3.2 Ingress](https://github.com/jpenna/kubernetes-mooc/tree/3.2)
 - [3.3 Gateway API](https://github.com/jpenna/kubernetes-mooc/tree/3.3)
 - [3.4 Gateway Reroute](https://github.com/jpenna/kubernetes-mooc/tree/3.4)
+- [3.5 Kustomize](https://github.com/jpenna/kubernetes-mooc/tree/3.5)
 
 ## Run
 

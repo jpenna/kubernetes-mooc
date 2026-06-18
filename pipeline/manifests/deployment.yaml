@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipeline
+  template:
+    metadata:
+      labels:
+        app: pipeline
+    spec:
+      containers:
+        - name: pipeline
+          image: PROJECT/IMAGE

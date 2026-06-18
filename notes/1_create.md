@@ -61,3 +61,15 @@ kubectl set image deployment/my-app kubernetes-mooc=kubernetes-mooc:v2
 ```bash
 kubectl scale deployment <deployment-name> --replicas=2
 ```
+
+## Kustomize
+
+Create a YAML file for the kustomization. Check [kustomization.yaml](../pipeline/kustomization.yaml) for an example.
+
+```bash
+kubectl apply -k <path-to-kustomization>
+kubectl delete -k <path-to-kustomization>
+
+# Dump
+kubectl kustomize <path-to-kustomization>
+```

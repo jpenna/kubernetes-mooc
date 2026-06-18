@@ -1,15 +1,16 @@
 import Hapi from "@hapi/hapi";
-import { Client } from "pg";
 
-const client = await new Client({
-  user: "postgres",
-  host: "postgres-svc.exercises.svc.cluster.local",
-  database: "postgres",
-  password: process.env.POSTGRES_PASSWORD,
-  port: 5432,
-}).connect();
+// const client = await new Client({
+//   user: "postgres",
+//   host: "postgres-svc.exercises.svc.cluster.local",
+//   database: "postgres",
+//   password: process.env.POSTGRES_PASSWORD,
+//   port: 5432,
+// }).connect();
 
 const port = Number(process.env.PORT) || 3000;
+
+let counter = 0;
 
 const server = Hapi.server({
   port,
@@ -22,11 +23,11 @@ server.route([
     path: "/pingpong",
     handler: async () => {
       try {
-        const inserted = await client.query(
-          "INSERT INTO pings DEFAULT VALUES RETURNING id;",
-        );
-        const counter = inserted.rows[0].id - 1;
-        return counter;
+        // const inserted = await client.query(
+        //   "INSERT INTO pings DEFAULT VALUES RETURNING id;",
+        // );
+        // const counter = inserted.rows[0].id - 1;
+        return counter++;
       } catch (error) {
         console.error("Error inserting into database", error);
         throw error;

@@ -31,6 +31,10 @@
 - [2.9 Todo App - CronJob](https://github.com/jpenna/kubernetes-mooc/tree/2.9)
 - [2.10 Todo App - Logging](https://github.com/jpenna/kubernetes-mooc/tree/2.10)
 
+### Chapter 3
+
+- [3.1 Ping in GKE](https://github.com/jpenna/kubernetes-mooc/tree/3.1)
+
 ## Run
 
 To install dependencies:

@@ -43,3 +43,13 @@ docker buildx build --platform linux/amd64,linux/arm64 \
   -t jpenna/k8s-mooc-ping:v7 \
   -f Dockerfile.ping . --push
 ```
+
+## Gateway API
+
+```bash
+# Find the cluster name
+gcloud container clusters list
+
+# Enable the Gateway API in the cluster
+gcloud container clusters update mooc-cluster --location=us-central1-c --gateway-api=standard
+```

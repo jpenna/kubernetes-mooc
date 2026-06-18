@@ -1,0 +1,3 @@
+- Delete the repositories in Docker Hub
+- Delete the cluster in GCloud: `gcloud container clusters delete mooc-cluster --zone=us-central1-c`
+  - kubernetes, load balancers

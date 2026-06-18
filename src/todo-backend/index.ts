@@ -41,15 +41,18 @@ server.route([
       const payload = (await request.payload) as Todo;
 
       if (payload === undefined) {
+        console.error({ error: "Invalid payload" });
         return h.response("Invalid payload").code(400);
       }
       if (payload.text === undefined || payload.text.length === 0) {
+        console.error({ error: "Invalid text" });
         return h.response("Invalid text").code(400);
       }
       if (payload.completed === undefined) {
         payload.completed = false;
       }
       if (payload.completed !== true && payload.completed !== false) {
+        console.error({ error: "Invalid completed" });
         return h.response("Invalid completed").code(400);
       }
 

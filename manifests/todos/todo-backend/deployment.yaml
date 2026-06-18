@@ -16,7 +16,7 @@ spec:
       containers:
         - name: todo-backend
           imagePullPolicy: IfNotPresent
-          image: todo-backend:v3
+          image: todo-backend:v4
           env:
             - name: PORT
               value: "3000"

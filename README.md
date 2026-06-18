@@ -29,6 +29,7 @@
 - [2.7 Ping App - database](https://github.com/jpenna/kubernetes-mooc/tree/2.7)
 - [2.8 Todo App - database](https://github.com/jpenna/kubernetes-mooc/tree/2.8)
 - [2.9 Todo App - CronJob](https://github.com/jpenna/kubernetes-mooc/tree/2.9)
+- [2.10 Todo App - Logging](https://github.com/jpenna/kubernetes-mooc/tree/2.10)
 
 ## Run
 

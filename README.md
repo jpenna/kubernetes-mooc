@@ -34,6 +34,7 @@
 ### Chapter 3
 
 - [3.1 Ping in GKE](https://github.com/jpenna/kubernetes-mooc/tree/3.1)
+- [3.2 Ingress](https://github.com/jpenna/kubernetes-mooc/tree/3.2)
 
 ## Run
 

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: exercises
+  name: log-output-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: shared-log
+          emptyDir: {}
+      containers:
+        - name: log-output-api
+          imagePullPolicy: IfNotPresent
+          image: jpenna/k8s-mooc-log-output:gke-v4
+          volumeMounts:
+            - name: shared-log
+              mountPath: /usr/src/app/logs
+          env:
+            - name: IS_API
+              value: "true"
+            - name: PORT
+              value: "3000"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+        - name: log-output-console
+          imagePullPolicy: IfNotPresent
+          image: jpenna/k8s-mooc-log-output:gke-v4
+          volumeMounts:
+            - name: shared-log
+              mountPath: /usr/src/app/logs
+          env:
+            - name: IS_API
+              value: "false"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi

@@ -31,6 +31,11 @@ kubectl cluster-info
 gcloud container clusters get-credentials mooc-cluster --zone=us-central1-c
 ```
 
+```bash
+# View external IP of the services
+kubectl get svc --watch
+```
+
 ## Build for GKE
 
 ```bash

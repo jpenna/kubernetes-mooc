@@ -36,6 +36,7 @@
 - [3.1 Ping in GKE](https://github.com/jpenna/kubernetes-mooc/tree/3.1)
 - [3.2 Ingress](https://github.com/jpenna/kubernetes-mooc/tree/3.2)
 - [3.3 Gateway API](https://github.com/jpenna/kubernetes-mooc/tree/3.3)
+- [3.4 Gateway Reroute](https://github.com/jpenna/kubernetes-mooc/tree/3.4)
 
 ## Run
 

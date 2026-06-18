@@ -56,21 +56,13 @@ if (isApi) {
     {
       method: "GET",
       path: "/",
-      handler: async (request, h) => {
-        console.log("Health check");
-        return h.response().code(200);
-      },
-    },
-    {
-      method: "GET",
-      path: "/logs",
       handler: async () => {
         console.log("Logs request received");
         const logs = fs.readFileSync(logFilePath, "utf8");
 
         console.log("Requesting ping");
         const ping = await axios
-          .get("http://ping-svc:2400/pingpong")
+          .get("http://ping-svc:2400/")
           // .get("http://ping-svc:2355/pingpong")
           .then((response) => response.data);
 

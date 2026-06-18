@@ -21,14 +21,6 @@ server.route([
   {
     method: "GET",
     path: "/",
-    handler: async (request, h) => {
-      console.log("Health check");
-      return h.response().code(200);
-    },
-  },
-  {
-    method: "GET",
-    path: "/pingpong",
     handler: async () => {
       console.log("Pingpong request received");
       try {

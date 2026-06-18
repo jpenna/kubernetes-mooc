@@ -21,7 +21,7 @@ spec:
       containers:
         - name: log-output-api
           imagePullPolicy: IfNotPresent
-          image: jpenna/k8s-mooc-log-output:gke-v4
+          image: jpenna/k8s-mooc-log-output:gke-v5
           volumeMounts:
             - name: shared-log
               mountPath: /usr/src/app/logs
@@ -39,7 +39,7 @@ spec:
               memory: 256Mi
         - name: log-output-console
           imagePullPolicy: IfNotPresent
-          image: jpenna/k8s-mooc-log-output:gke-v4
+          image: jpenna/k8s-mooc-log-output:gke-v5
           volumeMounts:
             - name: shared-log
               mountPath: /usr/src/app/logs

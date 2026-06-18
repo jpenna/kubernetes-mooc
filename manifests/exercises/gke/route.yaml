@@ -11,6 +11,12 @@ spec:
     - path:
         type: PathPrefix
         value: /pingpong
+    filters:
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            type: ReplacePrefixMatch
+            replacePrefixMatch: /
     backendRefs:
     - name: ping-svc
       port: 2400
@@ -18,6 +24,12 @@ spec:
     - path:
         type: PathPrefix
         value: /logs
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
     backendRefs:
     - name: log-output-svc
       port: 2300

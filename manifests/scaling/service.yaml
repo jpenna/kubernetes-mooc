@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cpushredder-svc
+  namespace: scaling
+spec:
+  type: NodePort
+  selector:
+    app: cpushredder
+  ports:
+    - port: 4000
+      protocol: TCP
+      targetPort: 3001
+      nodePort: 30080 # k3d maps host 8082 → 30080@agent:0

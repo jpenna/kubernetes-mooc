@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpushredder-dep
+  namespace: scaling
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cpushredder
+  template:
+    metadata:
+      labels:
+        app: cpushredder
+    spec:
+      containers:
+        - name: cpushredder
+          image: jakousa/dwk-app7:e11a700350aede132b62d3b5fd63c05d6b976394
+          resources:
+            # requests:
+            #   cpu: "100m"
+            #   memory: "100Mi"
+            limits:
+              cpu: "150m"
+              memory: "256Mi"

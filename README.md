@@ -43,6 +43,7 @@
 - 3.8 Github Actions + Delete env - Skipping (this is GA)
 - [3.9 DBaaS vs DIY](https://github.com/jpenna/kubernetes-mooc/tree/3.9)
 - 3.10 Store DB dump - Skipping (this is GCP)
+- [3.11 Requests and Limits](https://github.com/jpenna/kubernetes-mooc/tree/3.11) (I already had this done)
 
 ## Run
 

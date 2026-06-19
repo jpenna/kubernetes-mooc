@@ -38,6 +38,11 @@
 - [3.3 Gateway API](https://github.com/jpenna/kubernetes-mooc/tree/3.3)
 - [3.4 Gateway Reroute](https://github.com/jpenna/kubernetes-mooc/tree/3.4)
 - [3.5 Kustomize](https://github.com/jpenna/kubernetes-mooc/tree/3.5)
+- 3.6 Github Actions - Skipping (this is GA)
+- 3.7 Github Actions + Environment - Skipping (this is GA)
+- 3.8 Github Actions + Delete env - Skipping (this is GA)
+- [3.9 DBaaS vs DIY](https://github.com/jpenna/kubernetes-mooc/tree/3.9)
+- 3.10 Store DB dump - Skipping (this is GCP)
 
 ## Run
 
